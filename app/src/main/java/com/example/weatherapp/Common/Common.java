@@ -1,8 +1,13 @@
 package com.example.weatherapp.Common;
-import java.text.SimpleDateFormat;
-import java.util.*;
+
 import android.location.Location;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+/**
+ * Basic tools for the application.
+ */
 public class Common {
 
     public static final String API_KEY = "f6daa2d6bd3d8290b3a9cb5d3bbfcb1a";

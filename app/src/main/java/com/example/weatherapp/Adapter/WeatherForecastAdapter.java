@@ -6,14 +6,17 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.weatherapp.Common.Common;
 import com.example.weatherapp.Model.WeatherForecastResult;
-import com.example.weatherapp.Model.WeatherResult;
 import com.example.weatherapp.R;
 import com.squareup.picasso.Picasso;
+
+/**
+ * Create the Weather Forecast Adapter by using the Rest API, the items tools.
+ */
 
 public class WeatherForecastAdapter extends RecyclerView.Adapter<WeatherForecastAdapter.MyViewHolder> {
 
@@ -24,7 +27,7 @@ public class WeatherForecastAdapter extends RecyclerView.Adapter<WeatherForecast
         this.context = context;
     }
 
-    public WeatherForecastAdapter(WeatherForecastResult weatherForecastResult) {
+    public WeatherForecastAdapter(Context context, WeatherForecastResult weatherForecastResult) {
         this.weatherForecastResult = weatherForecastResult;
     }
 
@@ -41,35 +44,32 @@ public class WeatherForecastAdapter extends RecyclerView.Adapter<WeatherForecast
                 .append(WeatherForecastResult.List.get(position).weather.get(0).getIcon())
                 .append(".png"))).into(holder.img_weather);
 
-        holder.txt_date_time.setText(new StringBuilder(Common.convertUnixToDate(weatherForecastResult.List.get(position).dt)));
-        holder.txt_description.setText(new StringBuilder(weatherForecastResult.List.get(position).weather.get(0).getDescription()));
-        holder.txt_temperature.setText(new StringBuilder(String.valueOf(weatherForecastResult.List.get(position)
+        holder.txt_date_time.setText(new StringBuilder(Common.convertUnixToDate(WeatherForecastResult.List.get(position).dt)));
+        holder.txt_description.setText(new StringBuilder(WeatherForecastResult.List.get(position).weather.get(0).getDescription()));
+        holder.txt_temperature.setText(new StringBuilder(String.valueOf(WeatherForecastResult.List.get(position)
                 .main.getTemp())).append("°C"));
     }
 
 
-
-
     @Override
     public int getItemCount() {
-        return weatherForecastResult.List.size();
+        return WeatherForecastResult.List.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
         TextView txt_date_time,txt_description,txt_temperature;
         ImageView img_weather;
+
         public MyViewHolder(View itemView) {
             super(itemView);
-            img_weather=(ImageView)itemView.findViewById(R.id.img_weather);
-            txt_date_time=(TextView)itemView.findViewById(R.id.txt_date);
-            txt_description=(TextView)itemView.findViewById(R.id.txt_description);
-            txt_temperature=(TextView)itemView.findViewById(R.id.txt_temperature);
+            img_weather = itemView.findViewById(R.id.img_weather);
+            txt_date_time = itemView.findViewById(R.id.txt_date);
+            txt_description = itemView.findViewById(R.id.txt_description);
+            txt_temperature = itemView.findViewById(R.id.txt_temperature);
 
 
         }
     }
-
-
 
 
 }

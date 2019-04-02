@@ -11,14 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.weatherapp.Adapter.WeatherForecastAdapter;
 import com.example.weatherapp.Common.Common;
 import com.example.weatherapp.Model.WeatherForecastResult;
-import com.example.weatherapp.Model.WeatherResult;
 import com.example.weatherapp.Retrofit.IOpenWeatherMap;
 import com.example.weatherapp.Retrofit.RetrofitClient;
 
-
-import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
@@ -30,7 +28,9 @@ import retrofit2.Retrofit;
  * A simple {@link Fragment} subclass.
  */
 public class ForecastFragment extends Fragment {
-
+    /**
+     * Creation of a new Fragment for Forecast Weather
+     */
     CompositeDisposable compositeDisposable;
     IOpenWeatherMap mService;
 
@@ -52,6 +52,12 @@ public class ForecastFragment extends Fragment {
         mService = retrofit.create(IOpenWeatherMap.class);
     }
 
+    /**
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return the parameters of the forecast fragment.
+     */
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,16 +65,22 @@ public class ForecastFragment extends Fragment {
         // Inflate the layout for this fragment
         View itemView = inflater.inflate(R.layout.fragment_forecast, container, false);
 
-        txt_city_name = (TextView) itemView.findViewById(R.id.txt_city_name);
-        txt_geo_coord = (TextView) itemView.findViewById(R.id.txt_geo_coord);
+        txt_city_name = itemView.findViewById(R.id.txt_city_name);
+        txt_geo_coord = itemView.findViewById(R.id.txt_geo_coord);
 
-        recycler_forecast = (RecyclerView) itemView.findViewById(R.id.recycler_forecast);
+        recycler_forecast = itemView.findViewById(R.id.recycler_forecast);
         recycler_forecast.setHasFixedSize(true);
         recycler_forecast.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
 
         getForecastWeatherInformation();
 
         return itemView;
+    }
+
+    @Override
+    public void onStop() {
+        compositeDisposable.clear();
+        super.onStop();
     }
 
     private void getForecastWeatherInformation() {
@@ -82,26 +94,28 @@ public class ForecastFragment extends Fragment {
                 .subscribe(new Consumer<WeatherForecastResult>() {
 
                     @Override
-                    public void accept(WeatherForecastResult weatherForecastResult) throws Exception {
+                    public void accept(WeatherForecastResult weatherForecastResult) {
                         displayForecastWeather(weatherForecastResult);
                     }
 
 
                 }, new Consumer< Throwable>() {
                     @Override
-                    public void accept(Throwable throwable) throws Exception {
+                    public void accept(Throwable throwable) {
                         Log.d("ERROR",""+throwable.getMessage());
                     }
 
 
-                    })
+                })
 
-                    }
+    }
 
 
     private void displayForecastWeather(WeatherForecastResult weatherForecastResult) {
         txt_city_name.setText(new StringBuilder(weatherForecastResult.City.name));
         txt_city_name.setText(new StringBuilder(weatherForecastResult.City.coord.toString()));
+        WeatherForecastAdapter adapter = new WeatherForecastAdapter(getContext(), weatherForecastResult);
+        recycler_forecast.setAdapter(adapter);
     }
 }
 
