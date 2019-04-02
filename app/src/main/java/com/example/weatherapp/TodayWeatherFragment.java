@@ -3,7 +3,6 @@ package com.example.weatherapp;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FrameMetricsAggregator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +13,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.weatherapp.Common.Common;
-import com.example.weatherapp.Model.Weather;
 import com.example.weatherapp.Model.WeatherResult;
 import com.example.weatherapp.Retrofit.IOpenWeatherMap;
 import com.example.weatherapp.Retrofit.RetrofitClient;
@@ -25,7 +23,6 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 import retrofit2.Retrofit;
-import java.util.*;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -81,10 +78,8 @@ public class TodayWeatherFragment extends Fragment {
     }
 
     private void getWeatherInformation() {
-        compositeDisposable.add(mService.getWeatherByLatLng(String.valueOf(Common.current_location.getLatitude()),
-                String.valueOf(Common.current_location.getLongitude()),
-                Common.API_KEY,
-                "metric")
+        compositeDisposable.add(mService.getWeatherByLatLng(String.valueOf(Common.current_location.getLatitude()), String.valueOf(Common.current_location.getLongitude()), Common.API_KEY, String.valueOf(Common.current_location.getLatitude())
+                )
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<WeatherResult>() {
