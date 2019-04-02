@@ -87,13 +87,17 @@ public class ForecastFragment extends Fragment {
                     }
 
 
-                }, new Consumer< ?super Throwable>() {
-                    public void setThrowable( ?super Throwable throwable) throws Exception {
-                       Log.d("ERROR",""+throwable.getMessage());
+                }, new Consumer< Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        Log.d("ERROR",""+throwable.getMessage());
                     }
 
-                    }));
-}
+
+                    })
+
+                    }
+
 
     private void displayForecastWeather(WeatherForecastResult weatherForecastResult) {
         txt_city_name.setText(new StringBuilder(weatherForecastResult.City.name));
