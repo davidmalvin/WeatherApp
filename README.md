@@ -1,6 +1,6 @@
 # WeatherApp
 ## Introduction
-### Android Project 
+### Projet Android / Android Project
 
 Le projet a été réalisé par son auteur / This project is made by its author : David OBIANG NZUE 
 
@@ -13,5 +13,5 @@ and see the 5 day weather forecast.
 ![Check the app on the Tab Screen](https://user-images.githubusercontent.com/45243678/55495397-195c8b80-563d-11e9-92d9-bbf7ea9b5407.jpg)
 
 ## Screenshots
-### Today Weather
+###  Météo d'aujourd'hui / Today Weather
 ![Today Weather in Paris]()
