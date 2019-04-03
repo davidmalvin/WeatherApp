@@ -9,6 +9,6 @@ les prévisions météorologiques pour les cinq jours à venir.
 Welcome to WeatherApp ! The app in which you can have a look on the weather by sharing your location 
 and see the 5 day weather forecast.
 
-![Check the app on the Tab Screen](https://IMG_0599.jpg)
+![Check the app on the Tab Screen](https://user-images.githubusercontent.com/45243678/55495397-195c8b80-563d-11e9-92d9-bbf7ea9b5407.jpg)
 
 ## Screenshots
