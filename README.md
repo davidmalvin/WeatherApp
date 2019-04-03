@@ -14,7 +14,7 @@ and see the next 5-day-weather forecast.
 
 ## Screenshots
 ### Navigation
-#### Météo
+#### Météo / Weather 
 ![Météo du jour à Paris / Today Weather in Paris](https://user-images.githubusercontent.com/45243678/55499931-6e9d9a80-5647-11e9-940f-9bf0dec16701.jpg)
 
 
