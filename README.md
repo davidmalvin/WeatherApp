@@ -1,6 +1,7 @@
 # WeatherApp
 ## Introduction
 ### Projet Android / Android Project
+### Format date : mm/dd/yyyy - last update : 04/03/2019
 
 Le projet a été réalisé par son auteur / This project is made by its author : David OBIANG NZUE 
 
