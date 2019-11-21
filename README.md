@@ -3,7 +3,7 @@
 ### Projet Android / Android Project
 ### Format date : mm/dd/yyyy - last update : 04/03/2019
 
-Le projet a été réalisé par son auteur / This project is made by its author : David OBIANG NZUE 
+Le projet a été réalisé par son auteur / This project is made by its author : David O.
 
 Bienvenue sur WeatherApp ! L'application qui vous permet de consulter la météo à partir de votre localisation actuelle et 
 les prévisions météorologiques pour les cinq jours à venir.
